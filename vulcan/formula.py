@@ -46,13 +46,10 @@ class Formula(object):
         if not self.is_installed():
             return False
 
-
         # Open the state.json file and compare values to config.
         # If any value differs, consider the formula not current.
         with open(self.state_file, 'r') as fh:
             state = json.load(fh)
-            if state.get('checksum') != self.checksum():
-                log.info('Checksums differ for %s.', self.name)
             for key in ('name', 'origin_name', 'url', 'branch', 'revision'):
                 if state.get(key) != self.__dict__.get(key):
                     return False
