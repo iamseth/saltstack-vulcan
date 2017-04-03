@@ -16,17 +16,18 @@ class Context(object):
 
 @click.group()
 @click.option('--debug', is_flag=True, help='Enables debug mode.')
-@click.option('--config', type=click.Path(exists=True), default='./vulcan.yaml')
+@click.option('--config', type=click.Path(exists=True), default='./vulcan.yaml', help='Configuration file path. Defaults to ./vulcan.yaml.')
 @click.version_option(vulcan.__version__)
 @click.pass_context
 def cli(ctx, debug, config):
-    '''This function is the click group for all other CLI commands to belong to.
+    '''Formula build tool for SaltStack.
 
-    It mostly just sets up context and logging.
+    See https://github.com/iamseth/saltstack-vulcan for documentation.
     '''
     lvl = logging.DEBUG if debug else logging.INFO
     logging.basicConfig(level=lvl, format='%(asctime)s %(levelname)s %(message)s')
     ctx.obj = Context()
+    ctx.obj.cfg_file = config
     ctx.obj.cfg = vulcan.config.Config(config)
     ctx.obj.debug = debug
 
@@ -34,6 +35,8 @@ def cli(ctx, debug, config):
 @cli.command()
 @click.pass_context
 def install(ctx):
+    '''Install all non-installed formulas.
+    '''
     formulas = ctx.obj.cfg.formulas
     for formula in formulas:
         formula.install()
@@ -41,6 +44,8 @@ def install(ctx):
 @cli.command()
 @click.pass_context
 def update(ctx):
+    '''Update or install formulas.
+    '''
     formulas = ctx.obj.cfg.formulas
     for formula in formulas:
         formula.update()
