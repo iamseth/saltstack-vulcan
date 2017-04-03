@@ -14,16 +14,15 @@ Configuration is handled by a local YAML file. By default, $PWD/vulcan.yaml is u
 
 Formula configuration is stored as a list of dictionaries. Each formula has the following attributes. Only 'name' and 'url' are required however it is best practice to set the branch and revision as well.
 
-```
-name: A name for the formula for example 'apache' or 'mysql'. This is required.
-url: Git URL for the project. This is required.
-branch: Name of branch for checkout. Defaults to 'master'.
-revision: Git revision to use. If this does not exists, an exception will be thrown. Defaults to 'HEAD'.
-origin_name: If renaming a formula, the origin_name of the formula must be used to determine the change. Defaults to value of 'name' if not set.
-install_directory: Directory to install formula into. Defaults to ./formulas.
-```
 
-Below is an example configuration file.
+- **name**: A name for the formula for example 'apache' or 'mysql'. This is required.
+- **url**: Git URL for the project. This is required.
+- **branch**: Name of branch for checkout. Defaults to 'master'.
+- **revision**: Git revision to use. If this does not exists, an exception will be thrown. Defaults to 'HEAD'.
+- origin_name**: If renaming a formula, the origin_name of the formula must be used to determine the change. Defaults to value of 'name' if not set.
+- **install_directory**: Directory to install formula into. Defaults to ./formulas.
+
+### Example vulcan.yaml
 
 ```yaml
 formulas:
