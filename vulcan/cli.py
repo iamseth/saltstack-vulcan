@@ -16,7 +16,7 @@ class Context(object):
 
 @click.group()
 @click.option('--debug', is_flag=True, help='Enables debug mode.')
-@click.option('--config', type=click.Path(exists=True), default='./vulcan.yaml', help='Configuration file path. Defaults to ./vulcan.yaml.')
+@click.option('--config', type=click.Path(exists=True), default='./vulcan.yaml', help='Configuration file path. Defaults to ./vulcan.yaml.') # pylint: disable=line-too-long
 @click.version_option(vulcan.__version__)
 @click.pass_context
 def cli(ctx, debug, config):
