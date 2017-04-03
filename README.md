@@ -52,4 +52,20 @@ formulas:
 
 ## Usage
 
-TODO
+```bash
+Usage: vulcan [OPTIONS] COMMAND [ARGS]...
+
+  Formula build tool for SaltStack.
+
+  See https://github.com/iamseth/saltstack-vulcan for documentation.
+
+Options:
+  --debug        Enables debug mode.
+  --config PATH  Configuration file path. Defaults to ./vulcan.yaml.
+  --version      Show the version and exit.
+  --help         Show this message and exit.
+
+Commands:
+  install  Install all non-installed formulas.
+  update   Update or install formulas.
+```
