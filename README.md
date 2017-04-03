@@ -1,6 +1,12 @@
 # saltstack-vulcan
 
-Formula build tool for SaltStack. The idea is to assemble formulas from remote Git repositories to create an atomic 'build' for deployment instead of using the Salt package manager or referencing formulas via GitFS.
+Vulcan is a formula build tool for SaltStack. The idea is to assemble formulas from remote Git repositories to create an atomic 'build' for deployment.
+
+SaltStack has a native [package manager](https://docs.saltstack.com/en/latest/topics/spm/) which is a system package manager (SPM). It assembles formulas from remote locations but is geared towards assembling on the Salt master itself and requires extra metadata.
+
+Salt is also capable of loading formulas from Git using a [fileserver_backend](https://docs.saltstack.com/en/latest/ref/configuration/master.html#std:conf_master-fileserver_backend) however this too is geared towards assembly on the host itself.
+
+The goal of this project is to make it easy to assemble formulas from Git repositories during a build stage running on something like Jenkins. After assembly, all files can be delivered to Salt master(s) in an atomic way. This makes it easier to keep multiple masters sync'd and Docker based Salt master deployments easier.
 
 ## Installation
 
