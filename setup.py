@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 
-import vulcan
 from setuptools import setup
 
 setup(name='saltstack-vulcan',
-    version=vulcan.__version__,
+    version='0.1.2',
     description='Formula build tool for SaltStack.',
     author="Seth Miller",
     author_email='seth@sethmiller.me',
