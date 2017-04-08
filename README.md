@@ -9,7 +9,11 @@ Salt is also capable of loading formulas from Git using a [fileserver_backend](h
 The goal of this project is to make it easy to assemble formulas from Git repositories during a build stage running on something like Jenkins. After assembly, all files can be delivered to Salt master(s) in an atomic way. This makes it easier to keep multiple masters sync'd and Docker based Salt master deployments easier.
 
 ## Installation
-
+This requires gitpython, so ensure it is installed first:
+```bash
+sudo pip install gitpython
+```
+Then you can install saltstack-vulcan:
 ```bash
 sudo pip install saltstack-vulcan -U
 ```
