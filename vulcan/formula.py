@@ -88,7 +88,7 @@ class Formula(object):
             log.error('Could not get formula: %s , exception: %s' % (self.name, e))
 
         finally:
-            log.debug('Removing tmpdir %s' %(tmpdir))
+            log.debug('Removing tmpdir %s' % tmpdir)
             if os.path.isdir(tmpdir):
                 shutil.rmtree(tmpdir)
 
