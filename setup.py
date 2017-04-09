@@ -15,5 +15,6 @@ setup(name='saltstack-vulcan',
     install_requires=[
                       'GitPython>=2.1.3',
                       'PyYAML>=3.12',
+                      'click>=6.7',
     ],
 )

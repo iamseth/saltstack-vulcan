@@ -1,6 +1,7 @@
 import logging
 
 import vulcan
+import vulcan.config
 
 import click
 
