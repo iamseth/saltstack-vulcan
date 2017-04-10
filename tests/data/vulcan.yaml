@@ -1,0 +1,17 @@
+formulas:
+  - name: bind
+    url: https://github.com/saltstack-formulas/bind-formula
+    branch: master
+    revision: 29662c0f0452a48e1004038b6a3190b46fc4ed0b
+
+  - name: docker
+    url: https://github.com/saltstack-formulas/docker-formula
+    branch: master
+    revision: 0bff590b7bdd9568140c9693ca6e8b6fb4731408
+
+  - name: vpn
+    origin_name: openvpn
+    url: https://github.com/saltstack-formulas/openvpn-formula
+    branch: master
+    revision: b51cd17524cac79274c883bc381f0ba07edff3c7
+    install_directory: formulas

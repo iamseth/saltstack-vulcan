@@ -1,6 +1,6 @@
 import unittest
 
-import vulcan
+import vulcan.config
 
 class TestConfig(unittest.TestCase):
 
