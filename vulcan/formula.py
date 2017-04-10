@@ -85,9 +85,6 @@ class Formula(object):
             with open(self.state_file, 'w') as fh:
                 json.dump(self.as_dict(), fh)
 
-        except Exception as e:
-            log.error('Could not get formula: %s , exception: %s' % (self.name, e))
-
         finally:
             log.debug('Removing tmpdir %s' % tmpdir)
             if os.path.isdir(tmpdir):
