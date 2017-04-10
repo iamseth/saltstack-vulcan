@@ -60,13 +60,13 @@ class Formula(object):
         '''Install formula if not already installed. Will not update if out of date.
         '''
         if not force and self.is_installed():
-            logging.info('Formula %s is already installed, exiting' % self.name)
+            log.info('Formula %s is already installed, skipping.', self.name)
             return
 
-        log.info('Getting formula %s', % self.name)
+        log.info('Getting formula %s.', self.name)
         # Clone the repository to a temp directory.
         tmpdir = tempfile.mkdtemp()
-        log.debug('tmpdir is %s' % tmpdir)
+        log.debug('tmpdir is %s.', tmpdir)
         try:
             repo = git.Repo.clone_from(url=self.url, to_path=tmpdir, branch=self.branch)
             repo.head.reset(commit=self.revision, index=True, working_tree=True)
@@ -77,7 +77,7 @@ class Formula(object):
                 shutil.rmtree(destination)
 
             # Move formula into place.
-            log.info('Moving formula %s to %s' %(self.name, destination))
+            log.info('Moving formula %s to %s.', self.name, destination)
             origin = os.path.join(tmpdir, self.origin_name)
             shutil.move(origin, destination)
 
@@ -86,7 +86,7 @@ class Formula(object):
                 json.dump(self.as_dict(), fh)
 
         finally:
-            log.debug('Removing tmpdir %s' % tmpdir)
+            log.debug('Removing tmpdir %s.', tmpdir)
             if os.path.isdir(tmpdir):
                 shutil.rmtree(tmpdir)
 
