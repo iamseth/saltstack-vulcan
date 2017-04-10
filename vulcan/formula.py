@@ -78,7 +78,8 @@ class Formula(object):
 
             # Move formula into place.
             log.info('Moving formula %s to %s' %(self.name, destination))
-            shutil.move(tmpdir, destination)
+            origin = os.path.join(tmpdir, self.origin_name)
+            shutil.move(origin, destination)
 
             # Save state file.
             with open(self.state_file, 'w') as fh:
