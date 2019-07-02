@@ -29,5 +29,5 @@ def hashdir(path, file_excludes=None):
     file_hashes = [hashfile(f) for f in sorted(file_list)]
     hasher = hashlib.sha1()
     for file_hash in file_hashes:
-        hasher.update(file_hash)
+        hasher.update(file_hash.encode('utf-8'))
     return hasher.hexdigest()
