@@ -1,21 +1,22 @@
 SHELL := /bin/bash
 
-.PHONY: all
-all:
+build:
 	@python setup.py build
 
-.PHONY: lint
+install:
+	@python setup.py install
+
 lint:
 	@pylint -r n --rcfile .pylintrc vulcan
 
-.PHONY: test
 test:
 	@python -m unittest discover
 
-.PHONY: deploy
 deploy:
 	@python setup.py sdist upload -r pypi
 
-.PHONY: clean
 clean:
 	@rm -rf build saltstack_vulcan.egg-info
+
+
+.PHONY: build lint test deploy clean
