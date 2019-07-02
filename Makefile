@@ -16,7 +16,7 @@ deploy:
 	@python setup.py sdist upload -r pypi
 
 clean:
-	@rm -rf build saltstack_vulcan.egg-info
+	@rm -rf build saltstack_vulcan.egg-info dist formulas
 
 
 .PHONY: build lint test deploy clean
