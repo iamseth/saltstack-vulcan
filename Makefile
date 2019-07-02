@@ -1,10 +1,8 @@
 SHELL := /bin/bash
 
-build:
-	@python setup.py build
 
-install:
-	@python setup.py install
+build:
+	@python setup.py sdist bdist_wheel
 
 lint:
 	@pylint -r n --rcfile .pylintrc vulcan
@@ -12,11 +10,14 @@ lint:
 test:
 	@python -m unittest discover
 
-deploy:
-	@python setup.py sdist upload -r pypi
+test-release: build
+	@twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+
+release: build
+	@twine upload dist/*
 
 clean:
 	@rm -rf build saltstack_vulcan.egg-info dist formulas
 
 
-.PHONY: build lint test deploy clean
+.PHONY: build lint test release clean
