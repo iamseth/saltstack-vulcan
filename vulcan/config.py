@@ -10,5 +10,5 @@ log = logging.getLogger(__name__)
 class Config(object):
     def __init__(self, config_path='vulcan.yaml'):
         with open(config_path, 'rb') as fh:
-            self.cfg = yaml.load(fh)
+            self.cfg = yaml.load(fh, Loader=yaml.SafeLoader)
             self.formulas = [Formula.from_dict(f) for f in self.cfg.get('formulas', [])]
