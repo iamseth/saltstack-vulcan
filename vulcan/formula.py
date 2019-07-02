@@ -49,7 +49,12 @@ class Formula(object):
         # Open the state.json file and compare values to config.
         # If any value differs, consider the formula not current.
         with open(self.state_file, 'r') as fh:
-            state = json.load(fh)
+
+            try:
+                state = json.load(fh)
+            except json.decoder.JSONDecodeError as e:
+                return False
+
             for key in ('name', 'origin_name', 'url', 'branch', 'revision'):
                 if state.get(key) != self.__dict__.get(key):
                     return False
